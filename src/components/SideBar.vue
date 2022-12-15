@@ -1,57 +1,93 @@
 <template>
-    <nav>
-        <v-navigation-drawer v-model="drawer" dark app mini-variant mini-variant-width="100" class="teal">
-            <v-list>
-                <v-list-item class="mb-12">
-                    <v-list-item-content>
-                        <v-icon class="mb-2" large>fas fa-hand-holding-medical</v-icon>
-                        <v-list-item-subtitle align="center">Medi</v-list-item-subtitle>
-                    </v-list-item-content>
-                </v-list-item>
-            </v-list>
-            <v-list flat>
-                <v-list-item router to="/">
-                <v-list-item-content>
-                    <v-icon class="mb-2">fas fa-home</v-icon>
-                </v-list-item-content>
-                </v-list-item>
-                <v-list-item router to="/">
-                <v-badge color="pink" dot overlap>
-                        <v-list-item-content>
-                            <v-icon class="mb-2">fas fa-user</v-icon>
-                        </v-list-item-content>
-                    </v-badge>
-                    </v-list-item>
-                    <v-list-item router to="/">
-                        <v-list-item-content>
-                            <v-icon class="mb-2">fas fa-envelope</v-icon>
-                        </v-list-item-content>
-                    </v-list-item>
-                    <v-list-item router to="/">
-                    <v-list-item-content>
-                        <v-icon class="mb-2">fas fa-cog</v-icon>
-                    </v-list-item-content>
-                    </v-list-item>
-                    <v-list-item router to="/">
-                    <v-list-item-content>
-                        <v-icon class="mb-2">fas fa-question-circle</v-icon>
-                    </v-list-item-content>
-                    </v-list-item>
-            </v-list>
-            <v-list style="position: absolute; bottom:0" class="ml-3" flat>
-                <v-list-item router to="/">
-                <v-list-item-action>
-                    <v-icon right>fas fa-sign-out-alt</v-icon>
-                    </v-list-item-action>
-                    </v-list-item>
-            </v-list>
-        </v-navigation-drawer>
-    </nav>
+  <v-navigation-drawer :drawer="drawer" app>
+    <v-img
+      height="100"
+      class="pa-4"
+      src="https://qbot.com.tr/web/image/3930-2504c714/qdisco_slogan_2.png"
+    >
+      <!--
+    <div class="text-center">
+        <v-avatar class="mb-4" color="grey darken-1" size="64">
+          <v-img
+            aspect-ratio="30"
+            src="https://qbot.com.tr/web/image/1062-50a86d70/qtrack-logo.png"
+          />
+        </v-avatar>
+        <h2 class="white--text">TerzionDX</h2>
+      </div>
+    -->
+    </v-img>
+    <v-divider></v-divider>
+
+    <v-list>
+      <v-list-item v-for="[icon, text] in link" :key="icon" link>
+        <v-list-item-icon>
+          <v-icon>{{ icon }}</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>{{ text }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+    <v-list>
+      <v-list-group
+        v-for="item in items"
+        :key="item.title"
+        v-model="item.active"
+        :prepend-icon="item.action"
+        no-action
+      >
+        <template v-slot:activator>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title"></v-list-item-title>
+          </v-list-item-content>
+        </template>
+
+        <v-list-item v-for="child in item.items" :key="child.title">
+          <v-list-item-content>
+            <v-list-item-title v-text="child.title"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list-group>
+    </v-list>
+  </v-navigation-drawer>
 </template>
 <script>
 export default {
-    data: () =>({
-        drawer: true
-    })
-}
+  name: "SideBar",
+  props: ["drawer"],
+  data() {
+    return {
+      link: [["mdi-monitor-dashboard", "Dashboard"]],
+
+      items: [
+        {
+          action: "mdi-magnify",
+          active: true,
+          items: [
+            { title: "Users and Groups" },
+            { title: "Productivity" },
+            { title: "Working Hours" },
+            { title: "Top Websites" },
+            { title: "Top Apps" },
+            { title: "Top Categories" },
+            { title: "Activities Log" },
+          ],
+          title: "Qtrack",
+        },
+        {
+          action: "mdi-eye-settings-outline",
+          items: [{ title: "List Item" }],
+          title: "Qwatch",
+        },
+        {
+          action: "mdi-share",
+          items: [{ title: "List Item" }],
+          title: "Qsense",
+        },
+      ],
+    };
+  },
+};
 </script>
