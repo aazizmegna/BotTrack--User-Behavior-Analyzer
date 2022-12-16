@@ -1,21 +1,10 @@
 <template>
-  <v-navigation-drawer :drawer="drawer" app>
+  <v-navigation-drawer v-model="drawer" app>
     <v-img
       height="100"
       class="pa-4"
       src="https://qbot.com.tr/web/image/3930-2504c714/qdisco_slogan_2.png"
     >
-      <!--
-    <div class="text-center">
-        <v-avatar class="mb-4" color="grey darken-1" size="64">
-          <v-img
-            aspect-ratio="30"
-            src="https://qbot.com.tr/web/image/1062-50a86d70/qtrack-logo.png"
-          />
-        </v-avatar>
-        <h2 class="white--text">TerzionDX</h2>
-      </div>
-    -->
     </v-img>
     <v-divider></v-divider>
 
@@ -26,7 +15,7 @@
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title>{{ text }}</v-list-item-title>
+          <v-list-item-title link>{{ text }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -44,7 +33,13 @@
           </v-list-item-content>
         </template>
 
-        <v-list-item v-for="child in item.items" :key="child.title">
+        <v-list-item
+          v-for="child in item.items"
+          :key="child.title"
+          router
+          :to="child.route"
+          link
+        >
           <v-list-item-content>
             <v-list-item-title v-text="child.title"></v-list-item-title>
           </v-list-item-content>
@@ -53,26 +48,25 @@
     </v-list>
   </v-navigation-drawer>
 </template>
+
 <script>
 export default {
   name: "SideBar",
-  props: ["drawer"],
   data() {
     return {
+      drawer: true,
       link: [["mdi-monitor-dashboard", "Dashboard"]],
-
       items: [
         {
           action: "mdi-magnify",
-          active: true,
           items: [
-            { title: "Users and Groups" },
-            { title: "Productivity" },
-            { title: "Working Hours" },
-            { title: "Top Websites" },
-            { title: "Top Apps" },
-            { title: "Top Categories" },
-            { title: "Activities Log" },
+            { title: "Users and Groups", route: "/usersgroups" },
+            { title: "Productivity", route: "/productivity" },
+            { title: "Working Hours", route: "/workinghours" },
+            { title: "Top Websites", route: "/topwebsites" },
+            { title: "Top Apps", route: "/topapps" },
+            { title: "Top Categories", route: "/topcategories" },
+            { title: "Activities Log", route: "/activitieslog" },
           ],
           title: "Qtrack",
         },

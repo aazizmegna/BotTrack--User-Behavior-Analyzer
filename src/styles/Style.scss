@@ -1,0 +1,51 @@
+//----------------UsersGroupsTable-------------------
+.tableHead{
+    margin: 0;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 1px;
+}
+
+.th1, .th11, .th22{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.th1{
+    gap: 10px;
+}
+
+.th1 button, .th1 select{
+    border: 1px solid darkgray;
+    border-radius: 5%;
+    background-color:white;
+}
+
+.th11 button, .th22 button{
+    border: 1px darkgray;
+    border-radius: 5%;
+    color: darkgray;
+    background-color:white;
+}
+
+.tableHead2 .th11 .btnU, .tableHead2 .th22 .btnS{
+    color: white;
+    background-color: black;
+}
+.tableHead2{
+    margin: 0;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+.th1 button:hover, .th1 select:hover {
+    border: 1px solid black;
+    background-color:aliceblue;
+}

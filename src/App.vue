@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
-    <SideBar :drawer.sync="drawer"/>
-    <TopBar @drawerEvent="drawer = !drawer" />
+    <SideBar ref="drawer"/>
+    <TopBar @toggle-drawer="$refs.drawer.drawer = !$refs.drawer.drawer"/>
     <v-main style="background: #f5f5f540">
       <v-container class="py-8 px-6" fluid>
         <router-view></router-view>
@@ -18,8 +18,11 @@ export default {
   components: { TopBar, SideBar },
   data: () => ({
     cards: ["Today", "Yesterday"],
-    drawer: false,
+    drawer: null,
   }),
   methods: {},
 };
 </script>
+<style lang='scss'>
+  @import "./styles/Style.scss";
+</style>
