@@ -24,6 +24,13 @@
 ![bot3](https://github.com/aazizmegna/qdisco_ui/assets/77016461/5e5422b4-d8f3-41d4-a528-480cf9351940)
 
 ## Project setup
+
+To get started with the botTrack project, follow these steps:
+
+1. Clone the repository to your local machine.
+
+2. Install the required dependencies by running the following command:
+
 ```
 npm install
 ```
