@@ -15,9 +15,15 @@ export default new Vuetify({
         themes: {
             dark: {
                 background: colors.green.lighten5, // Not automatically applied
+                fontFamily: '"Segoe UI", Arial, sans-serif',
             },
             light: {
                 background: colors.shades.white, // If not using lighten/darken, use base to return hex
+                fontFamily: 'Segoe UI',
+                myprimary: '#22252d',
+                secondary: '#AAB2C0',
+                accent: '#8c9eff',
+                error: '#b71c1c',
             },
         },
     },
